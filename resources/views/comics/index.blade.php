@@ -13,6 +13,7 @@
                         Current Series
                     </h1>
                 </div>
+                <a href="{{ route('admin.comics') }}" class="btn btn-secondary">Edit</a>
                 <div class="row d-flex">
                     @foreach ($comics as $comic)
                         <div class="comic_card col-2 mb-5">
