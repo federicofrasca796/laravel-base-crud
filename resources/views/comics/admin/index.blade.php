@@ -4,7 +4,7 @@
 
 @section('main_content')
     <div class="container">
-        <button type="button" class="btn btn-secondary my-3">Add Comic</button>
+        <a href="{{ route('admin.comics.create') }}" class="btn btn-secondary my-3">Add Comic</a>
 
         <table class="table">
             <thead>
