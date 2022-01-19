@@ -13,24 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $comics = config('comics');
-    // ddd($comics);
-    return view('home', compact('comics'));
-})->name('home');
+Route::get('/', 'ComicController@index')->name('home');
 
-Route::get('comics/{id}', function ($id) {
-    $comics = config('comics');
-    if (is_numeric($id) && $id >= 0 && $id < count($comics)) {
-        $comic = $comics[$id];
-        // ddd($comics);
-
-        // return "Hai cliccato il fumetto con id: $id";
-        return view('comic', compact('comic'));
-    } else {
-        abort(404);
-    }
-})->name('comic');
+Route::get('comics/{comic}', 'ComicController@show')->name('comic');
 
 /* Route::get('/comics', function () {
     $comics = config('comics');
