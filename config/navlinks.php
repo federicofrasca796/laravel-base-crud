@@ -6,7 +6,7 @@ return [
     ],
     [
         'name' => 'Comics',
-        'route' => '/',
+        'route' => 'comics',
     ],
     [
         'name' => 'TV',
