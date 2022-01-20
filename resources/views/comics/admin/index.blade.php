@@ -23,30 +23,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($comics as $column)
+                @foreach ($comics as $comic)
                     <tr>
-                        <td>{{ $column->title }}</td>
-                        {{-- <td>{{ strlen($column->description) < 25 ? $column->description : substr($column->description, 0, 24) . '...' }}
+                        <td>{{ $comic->title }}</td>
+                        {{-- <td>{{ strlen($comic->description) < 25 ? $comic->description : substr($comic->description, 0, 24) . '...' }}
                         </td> --}}
-                        {{-- <td>{{ strlen($column->thumb) < 25 ? $column->thumb : substr($column->thumb, 0, 24) . '...' }}
+                        {{-- <td>{{ strlen($comic->thumb) < 25 ? $comic->thumb : substr($comic->thumb, 0, 24) . '...' }}
                         </td> --}}
-                        <td>{{ $column->price }}</td>
-                        <td>{{ $column->series }}</td>
-                        <td>{{ $column->date }}</td>
-                        {{-- <td>{{ $column->type }}</td>
-                        <td>{{ strlen($column->artists) < 25 ? $column->artists : substr($column->artists, 0, 24) . '...' }}
+                        <td>{{ $comic->price }}</td>
+                        <td>{{ $comic->series }}</td>
+                        <td>{{ $comic->date }}</td>
+                        {{-- <td>{{ $comic->type }}</td>
+                        <td>{{ strlen($comic->artists) < 25 ? $comic->artists : substr($comic->artists, 0, 24) . '...' }}
                         </td>
-                        <td>{{ strlen($column->writers) < 25 ? $column->writers : substr($column->writers, 0, 24) . '...' }}
+                        <td>{{ strlen($comic->writers) < 25 ? $comic->writers : substr($comic->writers, 0, 24) . '...' }}
                         </td> --}}
-                        <td>{{ $column->created_at }}</td>
-                        <td>{{ $column->updated_at }}</td>
+                        <td>{{ $comic->created_at }}</td>
+                        <td>{{ $comic->updated_at }}</td>
 
                         <td>
-                            <a href="{{ route('comics.admin.show', $comic->id) }}" target="_blank"
-                                rel="noopener noreferrer">
+                            <a href="{{ route('admin.show', $comic->id) }}" target="_blank" rel="noopener noreferrer">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <a href="{{ route('admin.edit', $comic->id) }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </td>
                     </tr>

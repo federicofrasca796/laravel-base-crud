@@ -38,20 +38,34 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $in = $request->all();
-        $newComic = new Comic();
-        $newComic->title = $in['title'];
-        $newComic->description = $in['description'];
-        $newComic->thumb = $in['thumb'];
-        $newComic->price = $in['price'];
-        $newComic->series = $in['series'];
-        $newComic->date = $in['date'];
-        $newComic->type = $in['type'];
-        $newComic->artists = $in['artists'];
-        $newComic->writers = $in['writers'];
-        $newComic->save();
+        // $in = $request->all();
+        // $newComic = new Comic();
+        // $newComic->title = $in['title'];
+        // $newComic->description = $in['description'];
+        // $newComic->thumb = $in['thumb'];
+        // $newComic->price = $in['price'];
+        // $newComic->series = $in['series'];
+        // $newComic->date = $in['date'];
+        // $newComic->type = $in['type'];
+        // $newComic->artists = $in['artists'];
+        // $newComic->writers = $in['writers'];
+        // $newComic->save();
 
-        return redirect()->route('comic', $newComic->id);
+        $validated = $request->validate([
+            'title' => 'required|unique:comics',
+            'description' => 'nullable',
+            'thumb' => 'nullable',
+            'price' => 'required',
+            'series' => 'nullable',
+            'date' => 'required',
+            'type' => 'nullable',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
+        ]);
+
+        Comic::create($validated);
+
+        return redirect()->route('comic');
     }
 
     /**
@@ -62,7 +76,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        ddd($comic);
+        // ddd($comic);
         return view('comics.admin.show', compact('comic'));
     }
 
@@ -74,7 +88,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.admin.edit', compact('comic'));
     }
 
     /**
@@ -86,7 +100,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|unique:comics',
+            'description' => 'nullable',
+            'thumb' => 'nullable',
+            'price' => 'required',
+            'series' => 'nullable',
+            'date' => 'required',
+            'type' => 'nullable',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
+        ]);
+
+        $comic->update($validated);
+
+        return redirect()->route('admin.comics')->with('message', 'Edit successfull!');
     }
 
     /**
