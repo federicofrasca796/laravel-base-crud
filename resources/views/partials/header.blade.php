@@ -23,7 +23,7 @@ $navlinks = config('navlinks');
                     <ul>
                         @foreach ($navlinks as $navitem)
                             <li class="{{ Route::currentRouteName() === $navitem['route'] ? 'active' : '' }}"><a
-                                    href="{{ $navitem['route'] }}">{{ $navitem['name'] }}</a></li>
+                                    href="{{ route($navitem['route']) }}">{{ $navitem['name'] }}</a></li>
                         @endforeach
                     </ul>
 
