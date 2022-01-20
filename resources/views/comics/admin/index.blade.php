@@ -42,13 +42,43 @@
                         <td>{{ $comic->updated_at }}</td>
 
                         <td>
-                            <a href="{{ route('admin.show', $comic->id) }}" target="_blank" rel="noopener noreferrer">
+                            <a href="{{ route('admin.show', $comic->id) }}" rel="noopener noreferrer">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-                            <a href="{{ route('admin.edit', $comic->id) }}" target="_blank" rel="noopener noreferrer">
+                            <a href="{{ route('admin.edit', $comic->id) }}" rel="noopener noreferrer">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modelId">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modelId" tabindex="-1" role="dialog"
+                                aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Delete comic {{ $comic->title }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            You're going to delete this record permanently.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{ route('admin.destroy', $comic->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </td>
                     </tr>
                 @endforeach
