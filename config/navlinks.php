@@ -2,7 +2,7 @@
 return [
     [
         'name' => 'Characters',
-        'route' => 'home',
+        'route' => 'characters',
     ],
     [
         'name' => 'Comics',
@@ -10,34 +10,34 @@ return [
     ],
     [
         'name' => 'TV',
-        'route' => 'home',
+        'route' => 'tv',
     ],
     [
         'name' => 'Movies',
-        'route' => 'home',
+        'route' => 'movies',
     ],
     [
         'name' => 'Games',
-        'route' => 'home',
+        'route' => 'games',
     ],
     [
         'name' => 'Collectibles',
-        'route' => 'home',
+        'route' => 'collectibles',
     ],
     [
         'name' => 'Videos',
-        'route' => 'home',
+        'route' => 'videos',
     ],
     [
         'name' => 'Fans',
-        'route' => 'home',
+        'route' => 'fans',
     ],
     [
         'name' => 'News',
-        'route' => 'home',
+        'route' => 'news',
     ],
     [
         'name' => 'Shop',
-        'route' => 'home',
+        'route' => 'shop',
     ],
 ];
